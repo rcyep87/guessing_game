@@ -4,12 +4,11 @@ class GuessingGame
   attr_accessor :comp_num   # => nil
 
   def initialize
-    @comp_num = 0  # => 0
+    @comp_num = SecureRandom.random_number(100)
     @guess_num_array = []
   end
 
   def comp_num(guess_num)
-    @comp_num = SecureRandom.random_number(100)
     if check_dup(guess_num)
       puts "No repeats! Please try again."
     else
@@ -51,4 +50,3 @@ end
 
 player = Player.new
 player.prompt
-
