@@ -2,7 +2,6 @@ require 'securerandom'  # => true
 require 'pry'
 class GuessingGame
   attr_accessor :comp_num   # => nil
-  attr_accessor :guess_num  # => nil
 
   def initialize
     @comp_num = 0  # => 0
@@ -14,7 +13,6 @@ class GuessingGame
     if check_dup(guess_num)
       puts "No repeats! Please try again."
     else
-      puts @guess_num_array.inspect
       if guess_num < @comp_num                                                                             # => false
         puts "You've guessed low! Please try again. GuessNum: #{guess_num}, CompNum: #{@comp_num}"
       elsif guess_num > @comp_num                                                                          # => false
