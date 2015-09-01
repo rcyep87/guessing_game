@@ -21,9 +21,26 @@ class GuessingGame
   end
 end
 
-guess_num = GuessingGame.new  # => #<GuessingGame:0x007fe33a102f00 @comp_num=0>
+class Player
 
-print "Please guess a number between 1 and 100: > "  # => nil
-ask_user = gets.chomp.to_i                           # ~> NoMethodError: undefined method `chomp' for nil:NilClass
-guess_num.comp_num(ask_user)
+  def initialize
+
+  end
+
+  def prompt
+    x = 0
+    while x < 5
+      guess_num = GuessingGame.new  # => #<GuessingGame:0x007fe33a102f00 @comp_num=0>
+
+      print "Please guess a number between 1 and 100: > "  # => nil
+      ask_user = gets.chomp.to_i                           # ~> NoMethodError: undefined method `chomp' for nil:NilClass
+      guess_num.comp_num(ask_user)
+      x += 1
+    end
+    puts "You've lost. You suck at lyfe"
+  end
+end
+
+player = Player.new
+player.prompt
 
