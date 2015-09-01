@@ -1,26 +1,29 @@
 require 'securerandom'  # => true
 
 class GuessingGame
+  attr_accessor :comp_num   # => nil
+  attr_accessor :guess_num  # => nil
+
   def initialize
-    @comp_num       # => nil
-    @guess_num      # => nil
+    @comp_num = 0  # => 0
   end
 
   def comp_num(guess_num)
-    @comp_num = SecureRandom.random_number(100)  # => 80
-    if @guess_num == @comp_num                   # => false
-      puts "Congrats, you've won!"
+    @comp_num = SecureRandom.random_number(100)                                                    # => 65
+    if guess_num == @comp_num                                                                      # => false
+      puts "Congrats, you've won! GuessNum: #{guess_num}, CompNum: #{@comp_num}"
+    elsif guess_num < @comp_num                                                                    # => true
+      puts "You've guessed low! Please try again. GuessNum: #{guess_num}, CompNum: #{@comp_num}"   # => nil
+    elsif guess_num > @comp_num
+      puts "You've guessed high! Please try again. GuessNum: #{guess_num}, CompNum: #{@comp_num}"
     else
-      puts "Please try again!"                   # => nil
-    end                                          # => nil
+      puts "What are you doing?!"
+    end                                                                                            # => nil
   end
 end
 
-# random_num = Random.new        # => #<Random:0x007f9a7b853910>
-# puts random_num.rand(0...100)  # => nil
+guess_num = GuessingGame.new  # => #<GuessingGame:0x007fa66184ecc0 @comp_num=0>
+puts guess_num.comp_num(50)   # => nil
 
-
-guess_num = GuessingGame.new  # => #<GuessingGame:0x007fb9f310c200>
-guess_num.comp_num(10)        # => nil
-
-# >> Please try again!
+# >> You've guessed low! Please try again. GuessNum: 50, CompNum: 65
+# >>
